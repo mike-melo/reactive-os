@@ -1,5 +1,7 @@
 BITS 16
 
+global _io_print_string
+
 start:
 
 	;The bootloader has initalized ax to our memory location
