@@ -1,16 +1,16 @@
 all: clean init build-kernel deploy
 
 link-modules:
-	cat src/std.mac src/header.asm  > build/kernel.asm
+	cat src/std.mac src/header.asm  > build/header.asm
 
 build-source: link-modules
-	nasm -f bin -o build/kernel.bin build/kernel.asm
+	nasm -f bin -o build/header.bin build/header.asm
 
 build-boot:
 	nasm -f bin -o build/boot.bin src/boot.asm
 
 link-kernel-and-boot:
-	cat build/boot.bin build/kernel.bin > build/boot-kernel.bin
+	cat build/boot.bin build/header.bin > build/boot-kernel.bin
 
 build-kernel: build-source build-boot link-kernel-and-boot
 	cp build/base.img build/kernel.img

@@ -9,12 +9,13 @@ start:
 	add ax, 288
     mov ss, ax
     mov sp, 4096
-	
-	invoke io_print_string, welcome_string
+
+	;invoke _main
+	invoke _io_print_string, welcome_string
 
 	welcome_string db 'Welcome to ReactiveOS 0.0.1!', 13, 10, 0
 
-io_print_string:
+_io_print_string:
     push bp
     push si
     push ax
